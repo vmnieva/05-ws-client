@@ -1,6 +1,8 @@
 import { connectToServer } from './socket-client'
 import './style.css'
-// import { setupCounter } from './counter.ts'
+
+// Este archivo es el punto de entrada: prepara la pantalla y conecta sus
+// controles con la lógica del cliente WebSocket.
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div> 
@@ -24,16 +26,14 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   </div>
 `
 
-// setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
-
-// connectToServer();
-
+// Obtenemos referencias a los elementos que el usuario puede utilizar.
 const jwtToken = document.querySelector<HTMLInputElement>('#jwt-token')!
 const btnConnect = document.querySelector<HTMLButtonElement>('#btn-connect')!
 
 btnConnect?.addEventListener('click', () =>{
-
+  // El servidor necesita un token para autenticar la conexión.
   if(jwtToken.value.trim().length <= 0) return alert("Enter a valid token");
 
+  // La conexión solo se inicia después de pulsar el botón y enviar el token.
   connectToServer(jwtToken.value);
 })
