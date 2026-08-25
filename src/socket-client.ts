@@ -5,7 +5,8 @@ let socket: Socket;
 
 export const connectToServer = (token: string) =>{
 
-    const manager = new Manager('http://localhost:3000/socket.io/socket.io.js', {
+    // const manager = new Manager('http://localhost:3000/socket.io/socket.io.js', {
+    const manager = new Manager('https://zero4-teslo-shop-x1bt.onrender.com/socket.io/socket.io.min.js', {
         extraHeaders: {
             hola: 'holamundo',
             authentication: token,
